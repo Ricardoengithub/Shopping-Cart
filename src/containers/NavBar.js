@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import NavBar from '../components/NavBar';
-// import { validateData, getUserStatus } from '../ducks/login';
+import { logOut } from '../ducks/login';
 
 const mapStateToProps = (state, props) => {
     return {
@@ -9,7 +9,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    // validateData: (user, password) => dispatch(validateData(user,password)),
+    logOut: () => dispatch(logOut()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

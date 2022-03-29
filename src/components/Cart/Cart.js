@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 
-const Cart = ({ items, total, currency, removeFromCart }) => {
+const Cart = ({ items, total, currency, removeFromCart, cleanCart }) => {
     const location = useLocation();
     const inCheckout = location.pathname === "/checkout"
     return (
@@ -26,11 +26,19 @@ const Cart = ({ items, total, currency, removeFromCart }) => {
                         <div className="cart__total">Total: {total} {currency}</div>
                         <div className="cart__total">Total con IVA: {total * 1.16} {currency}</div>
                             <div className="buy-button">
-                                <Link to={inCheckout ? "/" : "/checkout"}>
-                                    <button className={'btn ' + (inCheckout ? "btn-primary" : 'btn-success')}>
-                                        {inCheckout ? "Regresar" : "Comprar"}
+                                {
+                                    inCheckout
+                                    ? <Link to="/">
+                                        <button className='btn btn-primary' onClick={() => cleanCart()}>
+                                            Regresar
+                                        </button>
+                                    </Link>
+                                    : <Link to="/checkout">
+                                    <button className='btn btn-success'>
+                                        Comprar
                                     </button>
                                 </Link>
+                                }
                             </div>
                     </div>
                 </div>

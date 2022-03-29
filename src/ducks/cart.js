@@ -3,6 +3,8 @@ import { getProduct } from '../ducks/products';
 // actions
 const CART_ADD   = 'cart/ADD';
 const CART_REMOVE = 'cart/REMOVE';
+const CLEAN_CART = 'cart/CLEAN_CART';
+
 
 // reducer
 const initialState = {
@@ -16,6 +18,8 @@ export default function cart(state = initialState, action = {}) {
             return handleCartAdd(state, action.payload);
         case CART_REMOVE:
             return handleCartRemove(state, action.payload);
+        case CLEAN_CART:
+            return handleCleanCart(state, action.payload)
         default:
             return state;
     }
@@ -35,6 +39,13 @@ function handleCartRemove(state, payload) {
     };
 }
 
+function handleCleanCart(state, payload) {
+    return {
+        ...state,
+        items: []
+    };
+}
+
 // action creators
 export function addToCart(productId) {
     return {
@@ -51,6 +62,13 @@ export function removeFromCart(productId) {
         payload: {
             productId
         }
+    }
+}
+
+export function cleanCart(productId) {
+    return {
+        type: CLEAN_CART,
+        payload: {}
     }
 }
 
