@@ -23,6 +23,7 @@ const Login = ({ validateData }) => {
     return (
 			<div className='main'>
 				<h3>Login</h3>
+				<hr/>
 				<form onSubmit={(e) => handleSubmit(e)}>
 					<div className="mb-3">
 						<label className="form-label">Username:</label>
