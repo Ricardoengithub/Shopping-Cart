@@ -9,7 +9,8 @@ const USER_LOG_OUT = 'user/USER_LOG_OUT';
 const initialState = {
     logged: false,
     username: "",
-    userInfo: { options: []}
+    userInfo: { options: []},
+    errors: ""
 };
 
 export default function login(state = initialState, action = {}) {
@@ -25,11 +26,13 @@ export default function login(state = initialState, action = {}) {
 
 export function handleValidate(state, payload) {
     let logged = false
-    let userInfo = {}
+    let userInfo = { options: []}
+    let errors = ""
     users.forEach(user => {
         const { username, password } = user
         if (username === payload.user && password === payload.password) {
             logged = true
+            errors = ""
             role_group.forEach(item =>{
                 if (item.role === user.role){
                     userInfo = {role: item.role, options: item.modules.map(elem => elem.option)}
@@ -37,11 +40,15 @@ export function handleValidate(state, payload) {
             })
         }
     })
+    if (!logged){
+        errors = "Datos incorrectos"
+    }
     return {
         ...state,
         logged,
         username: payload.user,
-        userInfo
+        userInfo,
+        errors
     };
 }
 
@@ -50,7 +57,7 @@ export function handleLogOut(state, payload) {
         ...state,
         logged: false,
         username: "",
-        userINfo: {}
+        userInfo: {}
     };
 }
 

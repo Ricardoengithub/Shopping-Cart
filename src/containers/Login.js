@@ -4,6 +4,7 @@ import { validateData, getUserStatus } from '../ducks/login';
 
 const mapStateToProps = (state, props) => {
     return {
+        props: state,
         logged: getUserStatus(state,props)
     }
 }

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const Login = ({ validateData }) => {
-
+const Login = ({ props, validateData }) => {
 		const [data, setData] = useState({
 			user: "",
 			password: ""
@@ -33,7 +32,8 @@ const Login = ({ validateData }) => {
 						<label className="formal-label">Password:</label>
 						<input className="form-control" type="password" name="password" onChange={(e) => handleChange(e)} required />
 					</div><br/>
-					<button type="submit" className="btn btn-primary">Log in</button>
+					<button type="submit" className="btn btn-primary">Log in</button><br/>
+					<span><small>{props.user.errors}</small></span>
 				</form>
 			</div>
     );
