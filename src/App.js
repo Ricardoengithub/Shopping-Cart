@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import Cart from './containers/Cart';
 import ProductList from './containers/ProductList';
 import Login from "./containers/Login"
+import NavBar from './containers/NavBar';
 
 const App = () => {
     const isLogged = useSelector((state) => state.user.logged)
@@ -13,6 +14,7 @@ const App = () => {
                 !isLogged ?
                     <Login />
                     : <Fragment>
+                        <NavBar />
                         <div className="row">
                             <div className="col-md-12">
                                 <h1>Virtual Shop</h1>
