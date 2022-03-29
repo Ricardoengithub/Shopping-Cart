@@ -24,3 +24,8 @@
   line-height: 1.1em;
   text-align: right;
 }
+.buy-button {
+  margin: 15px 0;
+  display: flex;
+  justify-content: end;
+}

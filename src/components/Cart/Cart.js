@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 
@@ -21,6 +22,14 @@ const Cart = ({ items, total, currency, removeFromCart }) => {
                             <div className="alert alert-info">Cart is empty</div>
                         )}
                         <div className="cart__total">Total: {total} {currency}</div>
+                        <div className="cart__total">Total con IVA: {total * 1.16} {currency}</div>
+                        <div className="buy-button">
+                            <Link to="/cart">
+                                <button className='btn btn-success'>
+                                    Comprar
+                                </button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
