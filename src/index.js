@@ -12,6 +12,7 @@ import productsReducer from './ducks/products';
 import userReducer from './ducks/login';
 import productsData from './data/products';
 import App from './App';
+import CheckOut from './CheckOut';
 
 const rootReducer = combineReducers({
     cart: cartReducer,
@@ -43,6 +44,7 @@ render(
             <BrowserRouter >
                 <Routes>
                     <Route path="/" element={<App/>} />
+                    <Route path="/checkout" element={<CheckOut/>} />
                 </Routes>
             </BrowserRouter>
         </PersistGate>

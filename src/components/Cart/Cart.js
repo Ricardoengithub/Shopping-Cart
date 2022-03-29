@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import CartItem from './CartItem';
 
 const Cart = ({ items, total, currency, removeFromCart }) => {
+    const location = useLocation();
+    const inCheckout = location.pathname === "/checkout"
     return (
         <div>
             <h3>Shopping Cart</h3>
@@ -14,7 +16,7 @@ const Cart = ({ items, total, currency, removeFromCart }) => {
                         {items.length > 0 && (
                             <div className="cart__body">
                                 {items.map(item => (
-                                    <CartItem key={item.id} {...item} onClick={() => removeFromCart(item.id)} />
+                                    <CartItem key={item.id} {...item} onClick={() => removeFromCart(item.id)}  checkout={inCheckout} />
                                 ))}
                             </div>
                         )}
@@ -23,13 +25,13 @@ const Cart = ({ items, total, currency, removeFromCart }) => {
                         )}
                         <div className="cart__total">Total: {total} {currency}</div>
                         <div className="cart__total">Total con IVA: {total * 1.16} {currency}</div>
-                        <div className="buy-button">
-                            <Link to="/cart">
-                                <button className='btn btn-success'>
-                                    Comprar
-                                </button>
-                            </Link>
-                        </div>
+                            <div className="buy-button">
+                                <Link to={inCheckout ? "/" : "/checkout"}>
+                                    <button className={'btn ' + (inCheckout ? "btn-primary" : 'btn-success')}>
+                                        {inCheckout ? "Regresar" : "Comprar"}
+                                    </button>
+                                </Link>
+                            </div>
                     </div>
                 </div>
             </div>
