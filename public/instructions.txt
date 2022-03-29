@@ -1,4 +1,4 @@
-# 1: Component Login (Inicio de sesión) con validación para usuarios registrados en data/users.js. 
+# 1: Component Login (Inicio de sesión) con validación para usuarios registrados en data/users.js.
 
 # 2: Generar un menú tipo "top-navbar" en el cual se desplegarán las opciones de acuerdo a su rol asignado dentro del archivo de  data/role_grants.js
 
