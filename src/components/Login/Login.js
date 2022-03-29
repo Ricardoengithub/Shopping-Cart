@@ -33,7 +33,7 @@ const Login = ({ props, validateData }) => {
 						<input className="form-control" type="password" name="password" onChange={(e) => handleChange(e)} required />
 					</div><br/>
 					<button type="submit" className="btn btn-primary">Log in</button><br/>
-					<span><small>{props.user.errors}</small></span>
+					<span className='errors'><small>{props.user.errors}</small></span>
 				</form>
 			</div>
     );
